@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{route('admin.projects.store')}}" method="POST" class="mt-5">
+            <form action="{{route('admin.projects.store')}}" method="POST" class="mt-5" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 form-group">
                     <label for="title" class="control-label">Titolo: </label>
@@ -65,13 +65,12 @@
                 @error('technology_id')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
-                <div class="mb-3 form-group">
-                    <label for="image" class="control-label">Url immagine: </label>
-                    <input type="text" class="form-control" id="image" name="image" placeholder="Inserisci l'Url dell'immagine">
+                <div class="form-group mb-3">
+                    <label class="control-label mb-2">
+                        Immagine: 
+                    </label>
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
                 </div>
-                @error('image')
-                <div class="text-danger">{{$message}}</div>
-                @enderror
                 <button type="submit" class="btn btn-success my-3">
                     Salva
                 </button>

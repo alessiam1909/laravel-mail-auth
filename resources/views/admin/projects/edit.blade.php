@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{route('admin.projects.update', $project->slug)}}" method="POST" class="mt-5">
+            <form action="{{route('admin.projects.update', $project->slug)}}" method="POST" class="mt-5" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3 form-group">
