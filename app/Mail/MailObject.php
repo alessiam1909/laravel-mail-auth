@@ -20,9 +20,9 @@ class MailObject extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($lead)
     {
-        $this->lead = $_lead;
+        $this->lead = $lead;
     }
 
     /**
