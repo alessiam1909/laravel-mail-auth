@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\MailObject;
+use App\Models\Lead;
+use Illuminate\Support\Favades\Mail;
 
 class ProjectController extends Controller
 {
@@ -63,6 +66,14 @@ class ProjectController extends Controller
             $newProject->technologies()->attach($request->technologies);
         }
         
+        $newLead = new Lead();
+        $newLead->title = $form_data['title'];
+        $newLead->content = $form_data['content'];
+        $newLead->slug = $form_data['slug'];
+        $newLead->save();
+
+        Mail::to('info@boolpress.com')->send(new MailObject($newLead));
+
         return redirect()->route('admin.projects.index');
     }
 
