@@ -51,6 +51,13 @@ class ProjectController extends Controller
         if($request->has('technologies')){
             $newProject->technologies()->attach($request->technologies);
         }
+        $img_path = Storage::put('uploads', $data['image']);
+
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('post_images', $request->image);
+            
+            $form_data['image'] = $path;
+        }
         return redirect()->route('admin.projects.index');
     }
 
