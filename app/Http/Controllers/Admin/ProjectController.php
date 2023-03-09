@@ -99,6 +99,16 @@ class ProjectController extends Controller
        $slug = Project::createSlug($request->title, '-');
    
        $form_data['slug'] = $slug;
+
+       if($request->has('image')){
+       
+        if($project->image){
+            Storage::delete($project->image);  
+        }
+        $path = Storage::disk('public')->put('project_images', $request->image);
+        
+        $form_data['image'] = $path;
+    }
    
        $project->update($form_data);
 
