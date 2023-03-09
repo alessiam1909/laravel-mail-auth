@@ -33,7 +33,8 @@ class MailObject extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Mail Object',
+            replyTo: 'info@boolpress.com',
+            subject: 'Nuovo progetto inserito correttamente!',
         );
     }
 
@@ -45,7 +46,7 @@ class MailObject extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.new_project_added',
         );
     }
 
