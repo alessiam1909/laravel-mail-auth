@@ -27,7 +27,7 @@ class UpdateProjectRequest extends FormRequest
             'title' => ['required', Rule::unique('projects')->ignore($this->project), 'max:100'],
             'content' => ['nullable'],
             'slug' => ['required', 'max:100'],
-            'image' => ['required' , 'max:400'],
+            'image' => ['nullable' , 'image'],
             'type_id' => ['nullable', 'exists:types,id'],
             'technologies' => ['nullable', 'exists:technologies,id']
         ];
@@ -40,8 +40,7 @@ class UpdateProjectRequest extends FormRequest
             'title.max' => 'Il titolo può avere massimo 100 caratteri!',
             'slug.required' => 'Inserisci uno slug per il progetto!',
             'slug.max' => 'Lo slug può avere massimo 100 caratteri!',
-            'image.required' => 'Immagine obbligatoria!',
-            'image.max' => 'Il link immagine può avere massimo 400 caratteri!',
+            'image.image' => 'Inserire un formato per l\'immagine valido!',
             'type_id ' => 'Tipologia non valida',
             'technologies' => 'Tecnologia non valida'
             

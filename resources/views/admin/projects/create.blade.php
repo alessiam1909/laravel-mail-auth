@@ -65,11 +65,13 @@
                 @error('technology_id')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
-                <div class="form-group mb-3">
-                    <label class="control-label mb-2">
-                        Immagine: 
-                    </label>
-                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                <div class="form-group my-3">
+                    <label class="control-label">Immagine: </label>
+                    <input type="file" name="image" id="image" class="form-control
+                    @error('image')is-invalid @enderror">
+                    @error('image')
+                    <div class="text-danger">{{$message}}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-success my-3">
                     Salva

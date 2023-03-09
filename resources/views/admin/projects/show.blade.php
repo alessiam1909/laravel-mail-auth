@@ -6,7 +6,7 @@
         <div class="single-card-show">
                 <h1 class="titolo">{{$project->title}}</h1>
                 <div class="card-img-show ">
-                  <img src="{{$project->image}}">
+                    <img src="{{asset('storage/' .$project->image)}}" alt="{{$project->title}}">
                 </div>
                 <div class="content-show text-center">
                   <div class="title-show">{{$project->slug}}</div>

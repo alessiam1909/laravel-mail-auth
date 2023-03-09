@@ -72,13 +72,17 @@
                 @error('technology_id')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
-                <div class="mb-3 form-group">
-                    <label for="image" class="control-label">Url immagine: </label>
-                    <input type="text" class="form-control" id="image" name="image" value="{{old('title') ?? $project->image}}">
+                <div class="form-group my-3">
+                    <label class="control-label">Immagine: </label>
+                    <div>
+                    <img src="{{asset('storage/' .$project->image)}}" class="w-50">
+                    </div>
+                    <input type="file" name="image" id="image" class="form-control
+                    @error('image')is-invalid @enderror">
+                    @error('image')
+                    <div class="text-danger">{{$message}}</div>
+                    @enderror
                 </div>
-                @error('image')
-                <div class="text-danger">{{$message}}</div>
-                @enderror
                 <button type="submit" class="btn btn-success my-3">
                     Salva
                 </button>

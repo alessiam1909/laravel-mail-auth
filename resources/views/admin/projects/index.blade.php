@@ -9,7 +9,7 @@
         <div class="card-group">
             <a href="{{route('admin.projects.show',  ['project' => $project['slug']])}}">
                 <div class="card">
-                    <img class="card-img-top" src="{{$project->image}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('storage/' .$project->image)}}" alt="{{$project->title}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$project->title}}</h5>
                             <p class="card-text">{{$project->content}}</p>
